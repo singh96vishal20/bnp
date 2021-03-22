@@ -175,8 +175,9 @@
             var url = e.data.url;
             if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
               return;
-
-             if (e.data.action === "navigateTo") {
+            console.log('before navigateTo ifd condition')
+            if (e.data.actionType === "navigateTo") {
+                console.log('inside the if condition of navigateTo')
                 window.location.href = "https://singh96vishal20.github.io/bnp/subway/"
             }
           }
