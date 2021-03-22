@@ -161,6 +161,67 @@
 
 
     <script>
+	function receiveMessage(e, data) {
+            /**
+             * Receive message from child frame and update the DOM
+             * @param {Object} data - data used to update the DOM
+             * @returns - no return
+             */
+            // Check to make sure that this message came from the correct domain.
+            console.log('receiveMessage hit')
+            console.log('data is ' + data)
+            console.log('e details below')
+            console.log(e)
+            console.log('e details end')
+            var url = e.data.url;
+            if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
+              return;
+            console.log('before navigateTo ifd condition')
+            if (e.data.actionType === "navigateTo") {
+                console.log('inside the if condition of navigateTo')
+                window.location.href = "https://singh96vishal20.github.io/bnp/"
+            }
+          }
+        
+        function sendChatOverlayEvent(e, data) {
+            /**
+             * Receive message from child frame and update the DOM
+             * @param {Object} data - data used to update the DOM
+             * @returns - no return
+             */
+            // Check to make sure that this message came from the correct domain.
+            console.log('sendChatOverlayEvent hit')
+            console.log('data is ' + data)
+            console.log('e is '+ e)
+            
+            var url = e.data.url;
+            if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
+              return;
+
+             if (e.data.action === "navigateTo") {
+                window.location.href = "https://singh96vishal20.github.io/bnp/subway/"
+            }
+          }
+   
+          function sendMessage(data) {
+            /**
+             * Use data object and postMessage to URL provided (postMessage to child frame)
+             * @param {Object} data - data to be sent to url provided of child frame
+             * @returns - no return
+             */
+
+            var receiverElem = document.getElementById('receiver').contentWindow;
+            receiverElem.postMessage(data, "https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training");
+          }
+        
+        //to add event listener so that Amelia gets message for parent page
+        window.addEventListener('message', receiveMessage);
+        
+        var newData = {
+          curerntUrl = window.location.href;  
+        };
+	    
+	    
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
             document.getElementById('receiver').classList.add("open");
             document.getElementById('receiver').classList.remove("close");
@@ -170,6 +231,7 @@
             imgElemClose.style.opacity = 1;
             imgElemOpen.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', true);
+	    sendMessage(newData);
         }
 
         function closeChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
@@ -181,6 +243,7 @@
             imgElemOpen.style.opacity = 1;
             imgElemClose.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', false);
+	    sendMessage(newData);
         }
 
         function toggleChatOverlay() {
@@ -196,6 +259,7 @@
             } else {
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
+	    sendMessage(newData);
         }
 
         var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
