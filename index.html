@@ -167,7 +167,29 @@
              * @returns - no return
              */
             // Check to make sure that this message came from the correct domain.
+            console.log('receiveMessage hit')
+            console.log('data is ' + data)
+            console.log('e is '+ e)
+            var url = e.data.url;
+            if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
+              return;
 
+             if (e.data.action === "navigateTo") {
+                window.location.href = "https://singh96vishal20.github.io/bnp/subway/"
+            }
+          }
+        
+        function sendChatOverlayEvent(e, data) {
+            /**
+             * Receive message from child frame and update the DOM
+             * @param {Object} data - data used to update the DOM
+             * @returns - no return
+             */
+            // Check to make sure that this message came from the correct domain.
+            console.log('sendChatOverlayEvent hit')
+            console.log('data is ' + data)
+            console.log('e is '+ e)
+            
             var url = e.data.url;
             if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
               return;
