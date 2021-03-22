@@ -230,6 +230,9 @@
             imgElemOpen.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', true);
             sendMessage(newData);
+            var receiverElemContentWindow = document.getElementById('receiver').contentWindow;
+            // Trigger a BPN with no echo message
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
         }
 
         function closeChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
@@ -242,6 +245,9 @@
             imgElemClose.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', false);
             sendMessage(newData);
+            var receiverElemContentWindow = document.getElementById('receiver').contentWindow;
+            // Trigger a BPN with no echo message
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
         }
 
         function toggleChatOverlay() {
@@ -258,6 +264,9 @@
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
             sendMessage(newData);
+            var receiverElemContentWindow = document.getElementById('receiver').contentWindow;
+            // Trigger a BPN with no echo message
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
         }
 
         var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
