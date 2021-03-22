@@ -160,6 +160,37 @@
 
 
     <script>
+        function receiveMessage(e, data) {
+            /**
+             * Receive message from child frame and update the DOM
+             * @param {Object} data - data used to update the DOM
+             * @returns - no return
+             */
+            // Check to make sure that this message came from the correct domain.
+
+            var url = e.data.url;
+            if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
+              return;
+
+             if (e.data.action === "checkout" && e.data.additionalData) {
+                window.location.href = "/checkout/?additionalData="+ e.data.additionalData;
+            }
+          }
+   
+          function sendMessage(data) {
+            /**
+             * Use data object and postMessage to URL provided (postMessage to child frame)
+             * @param {Object} data - data to be sent to url provided of child frame
+             * @returns - no return
+             */
+
+            var receiverElem = document.getElementById('receiver').contentWindow;
+            receiverElem.postMessage(data, "https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training");
+          }
+        
+        //to add event listener so that Amelia gets message for parent page
+        window.addEventListener('message', receiveMessage);
+        
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
             document.getElementById('receiver').classList.add("open");
             document.getElementById('receiver').classList.remove("close");
