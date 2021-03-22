@@ -216,6 +216,10 @@
         //to add event listener so that Amelia gets message for parent page
         window.addEventListener('message', receiveMessage);
         
+        var newdata = {
+          curerntUrl = window.location.href;  
+        };
+        
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
             document.getElementById('receiver').classList.add("open");
             document.getElementById('receiver').classList.remove("close");
@@ -225,6 +229,7 @@
             imgElemClose.style.opacity = 1;
             imgElemOpen.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', true);
+            sendMessage(newdata);
         }
 
         function closeChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
@@ -236,6 +241,7 @@
             imgElemOpen.style.opacity = 1;
             imgElemClose.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', false);
+            sendMessage(newdata);
         }
 
         function toggleChatOverlay() {
@@ -251,6 +257,7 @@
             } else {
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
+            sendMessage(newdata);
         }
 
         var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
