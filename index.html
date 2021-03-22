@@ -172,8 +172,8 @@
             if (e.origin !== 'https://blr-amelia-demo1-v3.ipsoft.com')
               return;
 
-             if (e.data.action === "checkout" && e.data.additionalData) {
-                window.location.href = "/checkout/?additionalData="+ e.data.additionalData;
+             if (e.data.action === "navigateTo") {
+                window.location.href = "https://singh96vishal20.github.io/bnp/subway/"
             }
           }
    
