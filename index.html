@@ -208,9 +208,9 @@
              * @param {Object} data - data to be sent to url provided of child frame
              * @returns - no return
              */
-
+            console.log('inside sendMessage')
             var receiverElem = document.getElementById('receiver').contentWindow;
-            receiverElem.postMessage(data, "https://singh96vishal20.github.io");
+            receiverElem.postMessage(data, "https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training");
           }
         
         //to add event listener so that Amelia gets message for parent page
@@ -244,7 +244,7 @@
             imgElemClose.style.opacity = 1;
             imgElemOpen.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', true);
-            //sendMessage(newData);
+            sendMessage(newData);
             testSendMessage();
         }
 
@@ -257,7 +257,7 @@
             imgElemOpen.style.opacity = 1;
             imgElemClose.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', false);
-            //sendMessage(newData);
+            sendMessage(newData);
             testSendMessage();
         }
 
@@ -275,7 +275,7 @@
             } else {
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
-            //sendMessage(newData);
+            sendMessage(newData);
             testSendMessage();
         }
 
