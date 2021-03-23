@@ -228,11 +228,11 @@
             console.log('window.location.href')
             console.log(window.location.href)
             // Trigger a BPN with no echo message
-            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training');
             // Trigger a BPN with an echo message
-            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'multi-select', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'multi-select', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training');
             // Send an user utterance
-            receiverElemContentWindow.postMessage({actionType: 'ameliaSay', actionData: 'aloha'}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            receiverElemContentWindow.postMessage({actionType: 'ameliaSay', actionData: 'aloha'}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/?embed=iframe&domainCode=training');
         }
         
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
