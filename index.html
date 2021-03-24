@@ -230,9 +230,10 @@
             // Trigger a BPN with no echo message
             receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {submission: {shouldEcho: false}}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
             // Trigger a BPN with an echo message
-            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'multi-select', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            //receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'multi-select', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
             // Send an user utterance
             receiverElemContentWindow.postMessage({actionType: 'ameliaSay', actionData: 'aloha'}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            console.log('end of testMessage')
         }
         
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
@@ -244,8 +245,8 @@
             imgElemClose.style.opacity = 1;
             imgElemOpen.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', true);
-            sendMessage(newData);
-            testSendMessage();
+            //sendMessage(newData);
+            //testSendMessage();
         }
 
         function closeChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
@@ -257,8 +258,8 @@
             imgElemOpen.style.opacity = 1;
             imgElemClose.style.opacity = 0;
             localStorage.setItem('chatOverlayOpen', false);
-            sendMessage(newData);
-            testSendMessage();
+            //sendMessage(newData);
+            //testSendMessage();
         }
 
 
@@ -275,7 +276,7 @@
             } else {
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
-            sendMessage(newData);
+            //sendMessage(newData);
             testSendMessage();
         }
 
