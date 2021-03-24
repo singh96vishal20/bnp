@@ -224,11 +224,11 @@
             console.log('inside testMessage')
             var receiverElemContentWindow = document.getElementById('receiver').contentWindow;
             console.log('receiver content window ')
-            //console.log(receiverElemContentWindow)
+            console.log(receiverElemContentWindow)
             console.log('window.location.href')
             console.log(window.location.href)
             // Send an user utterance
-            console.log('befire ameliaSay')
+            console.log('before ameliaSay')
             receiverElemContentWindow.postMessage({actionType: 'ameliaSay', actionData: 'tell me about yourself'}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
             console.log('after amelilaSay')
             // Trigger a BPN with no echo message
