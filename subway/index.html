@@ -220,7 +220,27 @@
         var newData = {
           currentUrl : window.location.href 
         };
-	    
+	
+	function testSendMessage(){
+            console.log('inside testMessage')
+            var receiverElemContentWindow = document.getElementById('receiver').contentWindow;
+            //console.log('receiver content window ')
+            //console.log(receiverElemContentWindow)
+            //console.log('window.location.href')
+            //console.log(window.location.href)
+            // Send an user utterance
+            console.log('before ameliaSay')
+            receiverElemContentWindow.postMessage({actionType: 'ameliaSay', actionData: 'tell me about yourself'}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            console.log('after amelilaSay')
+            // Trigger a BPN with no echo message
+            console.log('before console.log')
+            receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'changePage', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            console.log('after changePage')
+            // Trigger a BPN with an echo message
+            //receiverElemContentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'multi-select', actionData: {message: 'run the workflow changePage'}}, 'https://blr-amelia-demo1-v3.ipsoft.com/Amelia/ui/supersonic/');
+            
+            console.log('end of testMessage')
+        }
 	    
         function openChatOverlay(receiverElem, imgElemOpen, imgElemClose) {
             document.getElementById('receiver').classList.add("open");
@@ -259,7 +279,8 @@
             } else {
                 closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
             }
-	    sendMessage(newData);
+	    //sendMessage(newData);
+	    testSendMessage();
         }
 
         var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
